@@ -5,3 +5,4 @@ resources:
 - external-mdns/
 - avahi/
 - castblock/
+- caddy/

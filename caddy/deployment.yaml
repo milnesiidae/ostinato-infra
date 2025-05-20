@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: caddy
+  namespace: caddy
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: caddy
+  template:
+    metadata:
+      labels:
+        app: caddy
+    spec:
+      containers:
+      - name: caddy
+        image: ghcr.io/coderanger/caddy-discord:latest
+        envFrom:
+        - secretRef:
+            name: caddy
+        volumeMounts:
+        - mountPath: /etc/caddy/Caddyfile
+          name: config
+          subPath: Caddyfile
+      - name: cloudflared
+        image: cloudflare/cloudflared:latest
+        args:
+        - tunnel
+        - --no-autoupdate
+        - run
+        - --url=http://localhost:8000/
+        envFrom:
+        - secretRef:
+            name: cloudflare
+      volumes:
+      - name: config
+        configMap:
+          name: caddyfile
