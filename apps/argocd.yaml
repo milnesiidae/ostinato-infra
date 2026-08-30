@@ -14,6 +14,8 @@ spec:
   project: infra
   syncPolicy:
     automated: {}
+    syncOptions:
+    - ServerSideApply=true
   ignoreDifferences:
   - group: ""
     kind: Secret
