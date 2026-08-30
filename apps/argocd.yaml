@@ -7,7 +7,7 @@ spec:
   source:
     repoURL: git@github.com:milnesiidae/ostinato-infra.git
     targetRevision: main
-    path: argo-cd/
+    path: argocd/
   destination:
     server: https://kubernetes.default.svc
     namespace: default
