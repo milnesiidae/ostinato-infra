@@ -7,3 +7,4 @@ resources:
 - apps.yaml
 - argocd.yaml
 - projects.yaml
+- sealed-secrets.yaml
