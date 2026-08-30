@@ -6,3 +6,4 @@ namespace: argocd
 resources:
 - apps.yaml
 - argocd.yaml
+- projects.yaml
