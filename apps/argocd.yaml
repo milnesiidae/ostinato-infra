@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  source:
+    repoURL: git@github.com:milnesiidae/ostinato-infra.git
+    targetRevision: main
+    path: argo-cd/
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  project: infra
+  syncPolicy:
+    automated: {}
+  ignoreDifferences:
+  - group: ""
+    kind: Secret
+    name: argocd-secret
+    namespace: argocd
+    jsonPointers:
+    - /data
