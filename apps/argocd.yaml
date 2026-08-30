@@ -17,8 +17,7 @@ spec:
     syncOptions:
     - ServerSideApply=true
   ignoreDifferences:
-  - group: ""
-    kind: Secret
+  - kind: Secret
     name: argocd-secret
     namespace: argocd
     jsonPointers:
