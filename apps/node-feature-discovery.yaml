@@ -1,13 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nvidia-device-plugin
+  name: node-feature-discovery
   namespace: argocd
 spec:
   source:
     repoURL: https://github.com/milnesiidae/ostinato-infra.git
     targetRevision: main
-    path: nvidia-device-plugin/
+    path: node-feature-discovery/
   destination:
     server: https://kubernetes.default.svc
     namespace: default
