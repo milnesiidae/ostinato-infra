@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gpu-operator
+  namespace: argocd
+spec:
+  source:
+    chart: gpu-operator
+    repoURL: https://helm.ngc.nvidia.com/nvidia
+    targetRevision: 26.7.0
+    helm:
+      parameters:
+      - name: driver.enabled
+        value: "false"
+      - name: toolkit.enabled
+        value: "false"
+      - name: hostPaths.driverInstallDir
+        value: /usr/local
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: gpu-operator
+  project: infra
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - ServerSideApply=true
+    - CreateNamespace=true
+    managedNamespaceMetadata:
+      labels:
+        pod-security.kubernetes.io/enforce: privileged

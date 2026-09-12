@@ -6,6 +6,7 @@ namespace: argocd
 resources:
 - apps.yaml
 - argocd.yaml
+- gpu-operator.yaml
 - node-feature-discovery.yaml
 - projects.yaml
 - sealed-secrets.yaml
