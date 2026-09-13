@@ -8,5 +8,6 @@ resources:
 - argocd.yaml
 - gpu-operator.yaml
 - node-feature-discovery.yaml
+- ollama.yaml
 - projects.yaml
 - sealed-secrets.yaml
