@@ -16,6 +16,22 @@ spec:
         value: "false"
       - name: hostPaths.driverInstallDir
         value: /usr/local
+      - name: devicePlugin.config.create
+        value: "true"
+      - name: devicePlugin.config.name
+        value: time-slicing-config-all
+      - name: devicePlugin.config.default
+        value: default
+      - name: devicePlugin.config.data.default
+        value: |
+          version: v1
+          flags:
+            migStrategy: none
+          sharing:
+            timeSlicing:
+              resources:
+              - name: nvidia.com/gpu
+                replicas: 10
   destination:
     server: "https://kubernetes.default.svc"
     namespace: gpu-operator
