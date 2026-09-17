@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ostinato-dns
+  namespace: argocd
+spec:
+  source:
+    repoURL: https://github.com/milnesiidae/ostinato-infra.git
+    targetRevision: main
+    path: ostinato-dns/
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  project: infra
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - ServerSideApply=true

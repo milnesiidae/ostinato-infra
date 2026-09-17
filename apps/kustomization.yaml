@@ -9,5 +9,6 @@ resources:
 - gpu-operator.yaml
 - node-feature-discovery.yaml
 - ollama.yaml
+- ostinato-dns.yaml
 - projects.yaml
 - sealed-secrets.yaml
