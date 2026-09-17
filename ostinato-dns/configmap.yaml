@@ -17,7 +17,8 @@ data:
             class error
         }
 
-        rewrite name suffix ostinato svc.cluster.local
+        rewrite stop name regex ^([^.]+)\.ostinato {1}.{1}.svc.cluster.local answer auto
+        rewrite stop name suffix ostinato svc.cluster.local answer auto
         forward svc.cluster.local kube-dns.kube-system.svc.cluster.local {
            max_concurrent 1000
         }
